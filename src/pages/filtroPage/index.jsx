@@ -9,7 +9,7 @@ export default function Filtro() {
                 <p>Comentários</p>
                 <p>Albuns</p>
             </div>
-            <div>
+            <div> 
                 <div>
                     <div>
                         <p>Fulano de tal</p>
