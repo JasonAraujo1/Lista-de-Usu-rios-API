@@ -7,7 +7,7 @@ export default function Layout() {
             
             <div>
                 <header className='bg-gray-300 w-full'>
-                    <img src="src/assets/logo-javascript.png" alt="logo" className='size-20 p-2' />
+                    <img src="src/assets/User.png" alt="logo" className='size-20 p-2' />
                 </header>
             </div>
             <div>
