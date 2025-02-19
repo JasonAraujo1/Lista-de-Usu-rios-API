@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { fetchApiUsers } from '../../services/fetchApi'
-import { NavLink } from 'react-router'
+import { NavLink, useNavigate } from 'react-router'
 import Filtro from '../filtroPage'
 
 export default function Home() {
   const [users, setUsers] = useState([])
   const [search, setSearch] = useState("")
+  const navigate = useNavigate()
 
   useEffect(() => {
     async function onLoad() {
@@ -25,7 +26,9 @@ export default function Home() {
     const option = users.filter(({ address }) => address.city === event.target.value)
     setUsers(option)
   }
-
+  function handleNavigate(id){
+    return navigate(`user/${id}`)
+  }
 
 
   return (
@@ -68,10 +71,10 @@ export default function Home() {
 
 
               {users.map((element) => (
-                <tr>
-                  <td className="border border-gray-400 px-4 py-2">{element.name}</td>
-                  <td className="border border-gray-400 px-4 py-2">{element.email}</td>
-                  <td className="border border-gray-400 px-4 py-2">{element.address.city}</td>
+                <tr onClick={()=> handleNavigate(element.id)}>
+                  <td className="border border-gray-400 px-4 py-2 cursor-pointer">{element.name}</td>
+                  <td className="border border-gray-400 px-4 py-2 cursor-pointer">{element.email}</td>
+                  <td className="border border-gray-400 px-4 py-2 cursor-pointer">{element.address.city}</td>
                 </tr>
               ))}
             </table>

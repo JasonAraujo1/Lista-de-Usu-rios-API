@@ -16,7 +16,7 @@ export default function Filtro() {
 
 
     return (
-
+       
         <div className='flex gap-2  my-2 w-full sm:w-10 md:w-200 mx-auto'>
 
             <div className='border-2 p-3 gap-3 flex flex-col pr-15 '>
@@ -27,6 +27,7 @@ export default function Filtro() {
                 <p className='cursor-pointer'>Albuns</p>
             </div>
             <div>
+              
                 {users.map((item) =>
                     <>
                         <div>

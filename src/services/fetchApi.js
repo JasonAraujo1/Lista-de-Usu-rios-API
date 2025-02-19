@@ -1,15 +1,60 @@
 
 export async function fetchApiUsers() {
-    try{
+    try {
         const response = await fetch("https://jsonplaceholder.typicode.com/users")
         const data = await response.json()
 
-        console.log("DADOS FETCHAPIUSERS:",data)
+        console.log("DADOS FETCHAPIUSERS:", data)
 
         return data
-    } catch(error){
+    } catch (error) {
         console.log("erro no fetch", error)
     }
- 
+
 }
 
+export async function fetchApiUserProfile(userId) {
+    try {
+        const response = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`);
+        return await response.json();
+    } catch (error) {
+        console.error("Erro no fetch:", error);
+        return null;
+    }
+}
+export async function fetchApiUsersPosts() {
+    try {
+        const response = await fetch(`https://jsonplaceholder.typicode.com/posts`);
+        return await response.json();
+    } catch (error) {
+        console.error("Erro no fetch:", error);
+        return null;
+    }
+}
+export async function fetchApiUsersComments() {
+    try {
+        const response = await fetch(`https://jsonplaceholder.typicode.com/comments`);
+        return await response.json();
+    } catch (error) {
+        console.error("Erro no fetch:", error);
+        return null;
+    }
+}
+export async function fetchApiUsersAlbums() {
+    try {
+        const response = await fetch(`https://jsonplaceholder.typicode.com/albums`);
+        return await response.json();
+    } catch (error) {
+        console.error("Erro no fetch:", error);
+        return null;
+    }
+}
+export async function fetchApiUsersAlbumsPhotos() {
+    try {
+        const response = await fetch(`https://jsonplaceholder.typicode.com/photos`);
+        return await response.json();
+    } catch (error) {
+        console.error("Erro no fetch:", error);
+        return null;
+    }
+}
