@@ -44,10 +44,8 @@ export default function User() {
 
   const albumsPhotosFilter = albumsPhotos
     .filter((items) => items.albumId === parseInt(id))
-    .map((items) =>
-      <img src={items.thumbnailUrl}>
-      </img>
-    )
+   
+    console.log("albumsPhotosFilter",albumsPhotosFilter)
 
   // Função para voltar a exibir postagens
   function handlePosts() {
@@ -102,11 +100,11 @@ export default function User() {
             ) : displayPosts === "albums" ? (
               userAlbums
                 .filter((albums) => albums.userId === parseInt(id)) // Filtra pelos albums do post do usuário
-                .map((albums) => (
+                .map((albums, index) => (
                   <div key={albums.id} className='w-full sm:w-10 md:w-152.5'>
                     <h2 className='font-extrabold'>Albuns:</h2>
                     <p className='mb-8 border-b border-b-gray-300 pb-5'>{albums.title}</p>
-                    {albumsPhotosFilter}
+                    <img src={albumsPhotosFilter[index]} alt="not found" />
                   </div>
                 ))
             ) : (
