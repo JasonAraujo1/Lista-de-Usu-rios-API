@@ -58,3 +58,12 @@ export async function fetchApiUsersAlbumsPhotos() {
         return null;
     }
 }
+export async function fetchApiLogin() {
+    try {
+        const response = await fetch(`https://67be079f321b883e790ee0ed.mockapi.io/api/v1/users`);
+        return await response.json();
+    } catch (error) {
+        console.error("Erro no fetch:", error);
+        return null;
+    }
+}

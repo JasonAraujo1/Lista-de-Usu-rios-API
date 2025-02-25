@@ -17,7 +17,8 @@ export default function User() {
       setUserProfile(profile);
 
       const posts = await fetchApiUsersPosts();
-      setUserPosts(posts);
+      const postFiltered = posts.filter((post) => post.userId === parseInt(id))
+      setUserPosts(postFiltered);
 
       handlePosts()
     }
@@ -27,25 +28,26 @@ export default function User() {
   // Função para carregar os comentários
   async function handleComments() {
     const comments = await fetchApiUsersComments();
-    setUserComments(comments);
+    const commentsFiltered = comments.filter((comment) => comment.postId === parseInt(id))
+    setUserComments(commentsFiltered);
     setDisplayPosts("comments"); // Exibir comentários
   }
   // Função para carregar os albuns
   async function handleAlbuns() {
     const albums = await fetchApiUsersAlbums();
-    setUserAlbums(albums);
+    const albumsFiltered = albums.filter((albums) => albums.userId === parseInt(id))
+    setUserAlbums(albumsFiltered);
     setDisplayPosts("albums"); // Exibir albuns
 
     const Photos = await fetchApiUsersAlbumsPhotos()
     setAlbumsPhotos(Photos)
-
   }
   // console.log("PHOTOS:", albumsPhotos)
 
   const albumsPhotosFilter = albumsPhotos
     .filter((items) => items.albumId === parseInt(id))
    
-    console.log("albumsPhotosFilter",albumsPhotosFilter)
+    // console.log("albumsPhotosFilter",albumsPhotosFilter)
 
   // Função para voltar a exibir postagens
   function handlePosts() {
@@ -76,9 +78,7 @@ export default function User() {
             <h1 className='font-extrabold text-xl mb-6'>Resultado:</h1>
 
             {displayPosts === "posts" ? (
-              // Exibindo as postagens
               userPosts
-                .filter((post) => post.userId === parseInt(id)) // Filtra pelo id do usuário
                 .map((post) => (
                   <div key={post.id}>
                     <h2 className='font-extrabold'>Título</h2>
@@ -87,19 +87,20 @@ export default function User() {
                     <p className='mb-8 border-b border-b-gray-300 pb-5'>{post.body}</p>
                   </div>
                 ))
-            ) : displayPosts === "comments" ? (
-              // Exibindo os comentários
+            ) : null}
+
+            {displayPosts === "comments" ? (
               userComments
-                .filter((comment) => comment.postId === parseInt(id)) // Filtra pelos comentários do post do usuário
                 .map((comment) => (
                   <div key={comment.id}>
                     <h2 className='font-extrabold'>Comentário:</h2>
                     <p className='mb-8 border-b border-b-gray-300 pb-5'>{comment.body}</p>
                   </div>
                 ))
-            ) : displayPosts === "albums" ? (
+            ) : null}
+            
+           { displayPosts === "albums" ? (
               userAlbums
-                .filter((albums) => albums.userId === parseInt(id)) // Filtra pelos albums do post do usuário
                 .map((albums, index) => (
                   <div key={albums.id} className='w-full sm:w-10 md:w-152.5'>
                     <h2 className='font-extrabold'>Albuns:</h2>
@@ -107,9 +108,9 @@ export default function User() {
                     <img src={albumsPhotosFilter[index]} alt="not found" />
                   </div>
                 ))
-            ) : (
-              <></>
-            )}
+            ) : null}
+              
+            
           </div>
         </div>
       </div>
