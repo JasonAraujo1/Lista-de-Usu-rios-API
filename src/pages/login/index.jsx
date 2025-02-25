@@ -13,7 +13,7 @@ export default function Login() {
         console.log(data)
 
         const dataFind = data.find((item)=>item.email === userEmail && item.password === userPassword)
-        console.log(dataFind)
+        console.log("data find",dataFind)                                                                                   
 
     }
 
