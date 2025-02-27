@@ -6,6 +6,7 @@ import Filtro from './pages/filtroPage'
 import Home from './pages/home'
 import User from './pages/user'
 import Login from './pages/login'
+import Register from './pages/register'
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/filtro" element={< Filtro />} />
         <Route path="/user/:id" element={< User />} />
         <Route path="/login" element={< Login />} />
+        <Route path="/register" element={< Register />} />
       </Route>
     </Routes>
   )
