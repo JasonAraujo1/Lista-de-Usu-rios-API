@@ -35,7 +35,7 @@ export default function Register() {
                     type="email" placeholder='email@hotmail.com'
                     className='outline mb-2 bg-white'
                     onChange={(event) => setInputDataEmail(event.target.value)} />
-                <span>Senha:</span>
+                <span>Senha: </span>
                 <input
                     onChange={(event) => setInputDataSenha(event.target.value)}
                     type="password" placeholder=' ex: 123456'
