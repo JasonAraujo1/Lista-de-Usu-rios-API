@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { fetchApiLogin } from '../../services/fetchApi'
-
+import { useNavigate } from 'react-router';
 
 
 export default function Login() {
     const [userEmail, setUserEmail] = useState("")
     const [userPassword, setUserPassword] = useState("")
+    const navigate = useNavigate()
 
     async function handleClick(event) {
         event.preventDefault()
@@ -14,9 +15,11 @@ export default function Login() {
 
         const dataFind = data.find((item) => item.email === userEmail && item.password === userPassword)
         console.log("data find", dataFind)
-        {!dataFind ? (
-          alert("Usuário ou senha incorretos!"))
-          : alert("login correto!")}
+        if (!dataFind) {
+            alert("Usuário ou senha incorretos!");
+        } else {
+            navigate("/")
+        }
     }
 
 
